@@ -1,26 +1,21 @@
 import React from "react";
-import { Alert, Col, Container, Row } from "react-bootstrap";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import "../assets/stylesheets/style.sass";
+import { Login } from "../LoginPages";
+import { history } from "../_helpers";
+import { PublicRoute } from "../_routes/PublicRoute";
+
 
 export const App = (): JSX.Element =>
 {
   return (
-    <Container>
-      <Row>
-        <Col><h1>React Template</h1></Col>
-      </Row>
-      {[
-        'Webpack',
-        'React',
-        'Typescript',
-        'Babel',
-        'Bootstrap',
-      ].map((variant, idx) => (
-        <Alert key={idx} variant={"success"}>
-          {variant}
-        </Alert>
-      ))}
-    </Container>
+    <div className="main-content">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<PublicRoute><Login /></PublicRoute>} />
+        </Routes>
+      </BrowserRouter>
+    </div>
   )
 }

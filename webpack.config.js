@@ -23,7 +23,7 @@ module.exports = {
       },
       {
         test: /\.(s[ac]ss|css)$/i,
-        // exclude: /node_modules/,
+        exclude: /node_modules/,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
