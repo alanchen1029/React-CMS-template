@@ -1,4 +1,7 @@
 import React from "react";
+import { Col, Container, Row } from "react-bootstrap";
+
+import Logo from "../assets/images/logo.png";
 
 class DeviseLayout extends React.Component
 {
@@ -6,16 +9,18 @@ class DeviseLayout extends React.Component
   {
     return (
       <div className="layout-devise">
-        <div className="grid-x">
-          <div className="cell large-6 show-for-large devise-left">
-            <div className="logo-area">
-              Logo
-            </div>
-          </div>
-          <div className="cell large-6 devise-right">
-            <div className="devise-main">{this.props.children}</div>
-          </div>
-        </div>
+        <Container fluid>
+          <Row >
+            <Col className="devise-left">
+              <div className="logo-area">
+                <img src={Logo} alt="" />
+              </div>
+            </Col>
+            <Col className="devise-right">
+              <div className="devise-main">{this.props.children}</div>
+            </Col>
+          </Row>
+        </Container>
       </div>
     );
   }

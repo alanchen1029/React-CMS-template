@@ -1,8 +1,8 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 
-// import { ManagerLoginTab, ManagerRegisterTab } from "./components";
+import { LoginTab, RegisterTab } from "./components";
 
 interface TabPanelProps
 {
@@ -30,7 +30,7 @@ function TabPanel(props: TabPanelProps)
 
 const Login = (): JSX.Element =>
 {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(1);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) =>
   {
@@ -41,14 +41,14 @@ const Login = (): JSX.Element =>
       <div className="panel-tabs small-margin-bottom-50">
         <Tabs value={value} onChange={handleChange} aria-label="login tabs" className="login-tabs">
           <Tab label="Sign Up" />
-          <Tab label="Log In" />
+          <Tab label="Sing In" />
         </Tabs>
       </div>
       <TabPanel value={value} index={0}>
-        {/* <ManagerRegisterTab /> */}
+        <RegisterTab />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        {/* <LoginTab /> */}
+        <LoginTab />
       </TabPanel>
     </div>
   );

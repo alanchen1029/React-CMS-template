@@ -1,75 +1,70 @@
 .layout-devise
-  font-family: 'Lato'
   line-height: 1.2
   height: 100vh
   width: 100%
   display: flex
-  color: #111
-  .grid-x
-    height: 100%
-    width: 100%
-    .devise-left
-      display: flex
-      align-items: center
-      background-color: #4f58e4
-      .logo-area 
-        margin: 0 auto
-        margin-top: 60px
-        max-width: 250px
-    .devise-right
-      padding: 30px
-      padding-bottom: 0
-      display: flex
-      padding-top: 30vh
-      background-color: #F2F2FF
-      .devise-main
-        width: 100%
-        // background-image: url(../../images/onboarding-bottom.svg)
-        background-size: contain
-        background-position: bottom
-        background-repeat: no-repeat
-        .panel
-          max-width: 500px
+  color: $black
+  .container-fluid
+    margin: 0
+    padding: 0
+    .row
+      height: 100%
+      width: 100%
+      .devise-left
+        display: flex
+        align-items: center
+        background-color: $theme
+        .logo-area 
           margin: 0 auto
-          .panel-header, .header
-            font-size: 30px
-            font-weight: bold
-            margin-bottom: 10px
-            a
-              color: #111
-              margin-right: 10px
-          .back-btn
-            color: #111
-            margin-bottom: 30px
-            font-size: 20px
-            display: block
-            cursor: pointer
-          &.login-panel
-            .login-wrapper
-              .sub-header
-                font-size: 16px
-                font-weight: 600
-                margin-bottom: 10px
-                &.text-centered
-                  text-align: center
-              .form-area
-                .form-inputs
-                  input
-                    color: #111
-                  .cell
-                    margin-bottom: 10px
-                    &:last-of-type
-                      margin-bottom: 0
-                .form-actions
-                  margin: 30px 0
-                  .button
-                    color: $white
-              .link-area
-                text-align: center
-                a
-                  font-size: 14px
-                  color: #111
-          
+          margin-top: 60px
+          max-width: 250px
+          > img
+            width: 100%
+      .devise-right
+        padding: 30px
+        padding-bottom: 0
+        display: flex
+        padding-top: 30vh
+        background-color: #F2F2FF
+        .devise-main
+          width: 100%
+          .panel
+            max-width: 500px
+            margin: 0 auto
+            .panel-header, .header
+              font-size: 30px
+              font-weight: bold
+              margin-bottom: 10px
+              a
+                color: $black
+                margin-right: 10px
+            .back-btn
+              color: $black
+              margin-bottom: 30px
+              font-size: 20px
+              display: block
+              cursor: pointer
+            &.login-panel
+              .login-wrapper
+                padding: $general-padding
+                .sub-header
+                  font-size: 16px
+                  font-weight: 600
+                  margin-bottom: 10px
+                  &.text-centered
+                    text-align: center
+                .input
+                  position: relative
+                  .eye-icons
+                    position: absolute
+                    right: 5px
+                    top: 10px
+                    z-index: 999
+                    cursor: pointer
+                .form-wrapper
+                  .actions-wrapper
+                    margin: 30px 0
+            
 
 // private classes
 .layout-devise
@@ -82,11 +77,11 @@
           overflow: hidden
           > button
             flex: 1
-            color: #111
+            color: $black
             font-size: 16px
             min-height: unset
             &.Mui-selected
-              background-color: #4f58e4
+              background-color: $theme
               color: $white
               font-weight: bold
         .MuiTabs-indicator

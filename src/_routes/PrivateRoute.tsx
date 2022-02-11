@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Navigate } from "react-router";
 
 import { ConsumerLayout } from "../_layouts";
@@ -10,7 +10,7 @@ interface IPrivateRouteProps
 
 const PrivateRoute = ({ children }: IPrivateRouteProps): JSX.Element =>
 {
-  const isAuth = React.useState(true);
+  const [isAuth, setIsAuth] = useState(true);
 
   return isAuth ? <ConsumerLayout>{children}</ConsumerLayout> : <Navigate to="/" />;
 };
