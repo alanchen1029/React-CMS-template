@@ -1,1 +1,57 @@
 // style for component
+.layout-consumer
+  .sidenav
+    width: $sidenav-width
+    position: fixed
+    top: 0
+    bottom: 0
+    left: 0
+    box-shadow: 2px 0 10px -2px rgba(0,0,0,0.1)
+    display: flex
+    flex-direction: column
+    padding: 40px 0 20px 0
+    background-color: $theme
+    .sidenav-logo
+      margin: 0 auto
+      margin-bottom: $general-margin
+      max-width: 120px
+      >img
+        max-width: 100%
+    ul
+      margin: 0
+      padding: 0
+      list-style: none
+      > li
+        > a
+          padding: 17px 20px
+          display: flex
+          color: $white
+          gap: 10px
+          text-decoration: none
+          .icon
+            display: flex
+            align-content: center
+            justify-content: center
+            min-width: 30px
+            .active
+              display: none
+          &.active, &:hover
+            background-color: $theme-light
+            color: $theme
+            font-weight: bold
+            .in-active
+              display: none
+            .active
+              display: block
+    .sidenav-bottom
+      margin-top: auto
+      border-top: 1px solid $white
+      padding-top: 14px
+      > a
+        display: flex
+        align-content: center
+        justify-content: flex-end
+        color: $white
+        font-weight: bold
+        gap: 15px
+        padding-right: $general-margin

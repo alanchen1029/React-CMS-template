@@ -10,6 +10,7 @@
     .row
       height: 100%
       width: 100%
+      margin: 0
       .devise-left
         display: flex
         align-items: center
@@ -24,7 +25,7 @@
         padding: 30px
         padding-bottom: 0
         display: flex
-        padding-top: 30vh
+        align-items: center
         background-color: #F2F2FF
         .devise-main
           width: 100%
@@ -53,15 +54,9 @@
                   margin-bottom: 10px
                   &.text-centered
                     text-align: center
-                .input
-                  position: relative
-                  .eye-icons
-                    position: absolute
-                    right: 5px
-                    top: 10px
-                    z-index: 999
-                    cursor: pointer
                 .form-wrapper
+                  .row>*
+                    padding: 0
                   .actions-wrapper
                     margin: 30px 0
             

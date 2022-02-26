@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Navigate } from "react-router";
+import { Navigate } from "react-router-dom";
 
 import { ConsumerLayout } from "../_layouts";
 

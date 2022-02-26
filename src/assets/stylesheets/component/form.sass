@@ -17,14 +17,24 @@ body
       &[readonly='readonly']
         background-color: $transparent
         cursor: auto
-      &:hover
+      &:hover, &:focus
         background-color: $transparent
-      &:focus
-        background-color: $transparent
-    .input
+        box-shadow: none !important
+    [class^="container"]
+      padding: 0
+    .form-input
       width: 100%
       margin-bottom: $general-margin
-      .from-error-msg
+      position: relative
+      label
+        margin-bottom: 0
+      .eye-icons
+        position: absolute
+        right: 5px
+        top: 10px
+        z-index: 999
+        cursor: pointer
+      .form-error-msg
         font-size: 12px
         color: $error
         margin-top: 3px

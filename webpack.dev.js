@@ -38,7 +38,6 @@ module.exports = merge(common, {
     new webpack.DefinePlugin({
       // define global variables here
       BASE_URL: JSON.stringify("/api/v1"),
-      DOMAIN: JSON.stringify("http://localhost:8080"),
     }),
     new MiniCssExtractPlugin({
       filename: "main.css",

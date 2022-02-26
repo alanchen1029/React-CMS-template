@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useFormik, FormikErrors } from 'formik';
+import { Col, Container, Row } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
-import { history } from "../../_helpers";
 import EyeOpen from "../../assets/images/eye-open-bk.svg";
 import EyeClose from "../../assets/images/eye-slash-bk.svg";
 
@@ -32,6 +33,7 @@ function validateLoginForm(values: FormValues)
 const LoginTab = (): JSX.Element =>
 {
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
@@ -42,17 +44,14 @@ const LoginTab = (): JSX.Element =>
     onSubmit: values =>
     {
       alert(JSON.stringify(values, null, 2));
-      loginAccount()
+      loginAccount();
     },
   });
 
   function loginAccount()
   {
-    // api request 
-    setTimeout(() =>
-    {
-      history.push("/list-1");
-    }, 500);
+    //do api request here
+    navigate("/list-1");
   }
 
   return (
@@ -60,31 +59,40 @@ const LoginTab = (): JSX.Element =>
       <div className="header">CMS Portal</div>
       <div className="sub-header">Please log in to your account</div>
       <div className="form-wrapper">
-        {/* <LoginForm /> */}
         <form onSubmit={formik.handleSubmit}>
-          <div className="input">
-            <input
-              type="text"
-              name="email"
-              placeholder="Email"
-              value={formik.values.email}
-              onChange={formik.handleChange}
-            />
-            {formik.touched.email && formik.errors.email && <div className="from-error-msg">{formik.errors.email}</div>}
-          </div>
-          <div className="input">
-            <input
-              type={showPassword ? "text" : "password"}
-              name="password"
-              placeholder="Password"
-              value={formik.values.password}
-              onChange={formik.handleChange}
-            />
-            {formik.touched.password && formik.errors.password && <div className="from-error-msg">{formik.errors.password}</div>}
-            <div className="eye-icons" onClick={() => setShowPassword(!showPassword)}>
-              {showPassword ? <img src={EyeClose} /> : <img src={EyeOpen} />}
-            </div>
-          </div>
+          <Container fluid>
+            <Row>
+              <Col sm={12}>
+                <div className="form-input">
+                  <input
+                    type="text"
+                    name="email"
+                    placeholder="Email"
+                    value={formik.values.email}
+                    onChange={formik.handleChange}
+                  />
+                  {formik.touched.email && formik.errors.email && <div className="form-error-msg">{formik.errors.email}</div>}
+                </div>
+              </Col>
+            </Row>
+            <Row>
+              <Col sm={12}>
+                <div className="form-input">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    name="password"
+                    placeholder="Password"
+                    value={formik.values.password}
+                    onChange={formik.handleChange}
+                  />
+                  {formik.touched.password && formik.errors.password && <div className="form-error-msg">{formik.errors.password}</div>}
+                  <div className="eye-icons" onClick={() => setShowPassword(!showPassword)}>
+                    {showPassword ? <img src={EyeClose} /> : <img src={EyeOpen} />}
+                  </div>
+                </div>
+              </Col>
+            </Row>
+          </Container>
           <div className="actions-wrapper">
             <button type="submit" className="align-right" disabled={formik.isSubmitting}>
               Sign In

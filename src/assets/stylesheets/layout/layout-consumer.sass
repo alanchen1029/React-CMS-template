@@ -1,4 +1,45 @@
-// style for consumer layout
 body
-  h1
-    color: blue
+  .layout-consumer
+    .consumer-main
+      padding: $general-padding*2
+      padding-left: $general-padding*2 + $sidenav-width
+      min-height: 100vh
+      height: 1px
+      overflow-y: scroll
+      .panel
+        display: flex
+        flex-direction: column
+        width: 100%
+        height: 100%
+        padding: $general-padding * 2
+        // margin-bottom: $column-gutter
+        background-color: $white
+        border-radius: 30px
+        box-shadow: 0px 23px 44px #DCD8CF
+        margin: 0 auto
+        overflow-y: scroll
+        &::-webkit-scrollbar
+          display: none
+        -ms-overflow-style: none
+        scrollbar-width: none
+        &.narrow-panel
+          max-width: 580px
+          height: auto
+        .panel-header
+          display: flex
+          justify-content: space-between
+          align-items: center
+          margin-bottom: $general-margin
+          .header-left
+            font-size: 25px
+            font-weight: bold
+            > a
+              display: flex
+              align-items: center
+              justify-content: flex-start
+              gap: 5px
+              color: $black
+              text-decoration: none
+              > img
+                cursor: pointer
+          .header-right

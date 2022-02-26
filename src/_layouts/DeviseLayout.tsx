@@ -11,12 +11,12 @@ class DeviseLayout extends React.Component
       <div className="layout-devise">
         <Container fluid>
           <Row >
-            <Col className="devise-left">
+            <Col className="devise-left" md={6}>
               <div className="logo-area">
                 <img src={Logo} alt="" />
               </div>
             </Col>
-            <Col className="devise-right">
+            <Col className="devise-right" md={6} sm={12}>
               <div className="devise-main">{this.props.children}</div>
             </Col>
           </Row>
