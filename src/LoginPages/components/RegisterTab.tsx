@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useFormik, FormikErrors } from 'formik';
-import { Col, Container, Row } from "react-bootstrap";
+import { Container, Row, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 import EyeOpen from "../../assets/images/eye-open-bk.svg";
@@ -75,54 +75,59 @@ const RegisterTab = (): JSX.Element =>
         <form onSubmit={formik.handleSubmit}>
           <Container fluid>
             <Row>
-              <Col sm={12}>
-                <div className="form-input">
-                  <input
-                    type="text"
-                    name="email"
-                    placeholder="Email"
-                    value={formik.values.email}
-                    onChange={formik.handleChange}
-                  />
-                  {formik.touched.email && formik.errors.email && <div className="form-error-msg">{formik.errors.email}</div>}
-                </div>
-              </Col>
+              <Form.Group controlId="validationFormik01" className="form-input">
+                <Form.Control
+                  type="text"
+                  name="email"
+                  placeholder="Email"
+                  value={formik.values.email}
+                  onChange={formik.handleChange}
+                  isValid={formik.touched.email && !formik.errors.email}
+                  isInvalid={formik.touched.email && !!formik.errors.email}
+                />
+                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                <Form.Control.Feedback type="invalid">
+                  {formik.errors.email}
+                </Form.Control.Feedback>
+              </Form.Group>
             </Row>
             <Row>
-              <Col sm={12}>
-                <div className="form-input">
-                  <input
-                    type={showPassword ? "text" : "password"}
-                    name="password"
-                    placeholder="Password"
-                    value={formik.values.password}
-                    onChange={formik.handleChange}
-                  />
-                  {formik.touched.password && formik.errors.password &&
-                    <div className="form-error-msg">{formik.errors.password}</div>}
-                  <div className="eye-icons" onClick={() => setShowPassword(!showPassword)}>
-                    {showPassword ? <img src={EyeClose} /> : <img src={EyeOpen} />}
-                  </div>
+              <Form.Group controlId="validationFormik01" className="form-input">
+                <Form.Control
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  placeholder="Password"
+                  value={formik.values.password}
+                  onChange={formik.handleChange}
+                  isValid={formik.touched.password && !formik.errors.password}
+                  isInvalid={formik.touched.password && !!formik.errors.password}
+                />
+                <div className="eye-icons" onClick={() => setShowPassword(!showPassword)}>
+                  {showPassword ? <img src={EyeClose} /> : <img src={EyeOpen} />}
                 </div>
-
-              </Col>
+                <Form.Control.Feedback type="invalid">
+                  {formik.errors.password}
+                </Form.Control.Feedback>
+              </Form.Group>
             </Row>
             <Row>
-              <Col sm={12}>
-                <div className="form-input">
-                  <input
-                    type={showPassword ? "text" : "password"}
-                    name="passwordConfirmation"
-                    placeholder="Password"
-                    value={formik.values.passwordConfirmation}
-                    onChange={formik.handleChange}
-                  />
-                  {formik.touched.passwordConfirmation && formik.errors.passwordConfirmation && <div className="form-error-msg">{formik.errors.passwordConfirmation}</div>}
-                  <div className="eye-icons" onClick={() => setShowPassword(!showPassword)}>
-                    {showPassword ? <img src={EyeClose} /> : <img src={EyeOpen} />}
-                  </div>
+              <Form.Group controlId="validationFormik01" className="form-input">
+                <Form.Control
+                  type={showPassword ? "text" : "password"}
+                  name="passwordConfirmation"
+                  placeholder="Password"
+                  value={formik.values.passwordConfirmation}
+                  onChange={formik.handleChange}
+                  isValid={formik.touched.passwordConfirmation && !formik.errors.passwordConfirmation}
+                  isInvalid={formik.touched.passwordConfirmation && !!formik.errors.passwordConfirmation}
+                />
+                <div className="eye-icons" onClick={() => setShowPassword(!showPassword)}>
+                  {showPassword ? <img src={EyeClose} /> : <img src={EyeOpen} />}
                 </div>
-              </Col>
+                <Form.Control.Feedback type="invalid">
+                  {formik.errors.password}
+                </Form.Control.Feedback>
+              </Form.Group>
             </Row>
             <div className="actions-wrapper">
               <button type="submit" className="align-right" disabled={formik.isSubmitting}>

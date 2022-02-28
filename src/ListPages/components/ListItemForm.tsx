@@ -158,7 +158,7 @@ export const ListItemForm = ({ initialValues, onSubmit, cancelSubmit }: ItemForm
           <div className="actions-wrapper">
             {cancelSubmit &&
               <button
-                className="cancel-button"
+                className="button cancel-button"
                 disabled={formik.isSubmitting}
                 onClick={(e) =>
                 {
@@ -170,7 +170,7 @@ export const ListItemForm = ({ initialValues, onSubmit, cancelSubmit }: ItemForm
                 Cancel
               </button>
             }
-            <button type="submit" className='align-right' disabled={formik.isSubmitting}>
+            <button type="submit" className='button align-right' disabled={formik.isSubmitting}>
               Save
             </button>
           </div>

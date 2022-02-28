@@ -34,8 +34,22 @@ body
         top: 10px
         z-index: 999
         cursor: pointer
-      .form-error-msg
-        font-size: 12px
+      .input-error
+        display: block
+        margin-top: 0.25rem
+        font-size: .875em
         color: $error
-        margin-top: 3px
+    .date-picker
+      width: 100%
+      button
+        min-width: unset
+      > div
+        border-radius: 0
+        padding-right: 0
+        input
+          padding: 0
+          height: $input-height
+        fieldset
+          border: none
+          border-bottom: 1px solid $black
       
