@@ -13,7 +13,7 @@ body
       box-shadow: none
       background-color: $transparent
       color: $black 
-      border-bottom: 1px solid $theme
+      border-bottom: 1px solid $gray-dark
       &[readonly='readonly']
         background-color: $transparent
         cursor: auto
@@ -52,4 +52,23 @@ body
         fieldset
           border: none
           border-bottom: 1px solid $black
-      
+    .form-select
+      border: none
+      border-bottom: 1px solid $gray-dark
+      border-radius: 0
+      height: $input-height
+      padding: 0
+    .radio-buttons-group
+      flex-direction: row
+    .react-select
+      height: $input-height
+      > div
+        &:first-of-type
+          border: none
+          border-bottom: 1px solid $gray-dark
+          border-radius: 0
+          box-shadow: none
+          > div
+            padding: 0
+            input
+              height: auto

@@ -130,7 +130,7 @@ const RegisterTab = (): JSX.Element =>
               </Form.Group>
             </Row>
             <div className="actions-wrapper">
-              <button type="submit" className="align-right" disabled={formik.isSubmitting}>
+              <button type="submit" className="button align-right" disabled={formik.isSubmitting}>
                 Sign In
               </button>
             </div>

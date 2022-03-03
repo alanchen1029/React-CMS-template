@@ -1,6 +1,6 @@
 import React from 'react';
 import { useFormik, FormikErrors } from 'formik';
-import { Container, Form, Row } from "react-bootstrap";
+import { Col, Container, Form, Row } from "react-bootstrap";
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Radio from '@mui/material/Radio';
@@ -8,6 +8,7 @@ import TextField from "@mui/material/TextField";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DatePicker from '@mui/lab/DatePicker';
+import Select from 'react-select';
 
 interface InputVariantsFormValues
 {
@@ -19,7 +20,20 @@ interface InputVariantsFormValues
   switch: boolean,
   select: string,
   date: Date | null,
+  options: Option[] | [],
+  file: string | number | string[] | undefined,
 }
+
+type Option = {
+  value: string;
+  label: string
+}
+
+const demoOptions: Option[] = [
+  { value: 'chocolate', label: 'Chocolate' },
+  { value: 'strawberry', label: 'Strawberry' },
+  { value: 'vanilla', label: 'Vanilla' }
+]
 
 export function validateCreateItemForm(values: InputVariantsFormValues)
 {
@@ -32,10 +46,6 @@ export function validateCreateItemForm(values: InputVariantsFormValues)
   {
     errors.number = 'Number Input Required';
   }
-  // if (!values.range)
-  // {
-  //   errors.range = 'Range Required';
-  // }
   if (!values.radio)
   {
     errors.radio = 'Radio Check Required';
@@ -52,6 +62,14 @@ export function validateCreateItemForm(values: InputVariantsFormValues)
   {
     errors.date = 'Date Required';
   }
+  if (values.options.length < 1)
+  {
+    errors.options = 'At least select one Required';
+  }
+  if (!values.file)
+  {
+    errors.file = 'Upload File Required';
+  }
   return errors;
 }
 
@@ -61,12 +79,14 @@ export const InputVariantsForm = (): JSX.Element =>
     initialValues: {
       text: '',
       number: '',
-      range: 0,
+      range: 5,
       radio: '',
       checkbox: false,
       switch: false,
       select: '',
       date: null,
+      options: [],
+      file: '',
     },
     validate: (values: InputVariantsFormValues) => validateCreateItemForm(values),
     onSubmit: values =>
@@ -74,45 +94,46 @@ export const InputVariantsForm = (): JSX.Element =>
       alert(JSON.stringify(values, null, 2));
     },
   });
-  console.log(formik.values)
+
   return (
     <div className="form-wrapper">
       <Form onSubmit={formik.handleSubmit}>
         <Container fluid>
           <Row>
-            <Form.Group controlId="validationFormik01" className="form-input">
-              <Form.Label>Text Input</Form.Label>
-              <Form.Control
-                type="text"
-                name="text"
-                value={formik.values.text}
-                onChange={formik.handleChange}
-                isValid={formik.touched.text && !formik.errors.text}
-                isInvalid={formik.touched.text && !!formik.errors.text}
-              />
-              <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-              <Form.Control.Feedback type="invalid">
-                {formik.errors.text}
-              </Form.Control.Feedback>
-            </Form.Group>
-          </Row>
-
-          <Row>
-            <Form.Group controlId="validationFormik02" className="form-input">
-              <Form.Label>Number Input</Form.Label>
-              <Form.Control
-                type="number"
-                name="number"
-                value={formik.values.number}
-                onChange={formik.handleChange}
-                isValid={formik.touched.number && !formik.errors.number}
-                isInvalid={formik.touched.number && !!formik.errors.number}
-              />
-              <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-              <Form.Control.Feedback type="invalid">
-                {formik.errors.number}
-              </Form.Control.Feedback>
-            </Form.Group>
+            <Col md={6}>
+              <Form.Group controlId="validationFormik01" className="form-input">
+                <Form.Label>Text Input</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="text"
+                  value={formik.values.text}
+                  onChange={formik.handleChange}
+                  isValid={formik.touched.text && !formik.errors.text}
+                  isInvalid={formik.touched.text && !!formik.errors.text}
+                />
+                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                <Form.Control.Feedback type="invalid">
+                  {formik.errors.text}
+                </Form.Control.Feedback>
+              </Form.Group>
+            </Col>
+            <Col md={6}>
+              <Form.Group controlId="validationFormik02" className="form-input">
+                <Form.Label>Number Input</Form.Label>
+                <Form.Control
+                  type="number"
+                  name="number"
+                  value={formik.values.number}
+                  onChange={formik.handleChange}
+                  isValid={formik.touched.number && !formik.errors.number}
+                  isInvalid={formik.touched.number && !!formik.errors.number}
+                />
+                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                <Form.Control.Feedback type="invalid">
+                  {formik.errors.number}
+                </Form.Control.Feedback>
+              </Form.Group>
+            </Col>
           </Row>
 
           <Row>
@@ -133,6 +154,7 @@ export const InputVariantsForm = (): JSX.Element =>
               <Form.Label>Radio Group</Form.Label>
               <RadioGroup
                 name="radio"
+                className='radio-buttons-group'
                 aria-labelledby="demo-radio-buttons-group-label"
                 value={formik.values.radio}
                 onChange={formik.handleChange}
@@ -211,6 +233,41 @@ export const InputVariantsForm = (): JSX.Element =>
                 />
               </LocalizationProvider>
               {formik.touched.date && formik.errors.date && <div className="input-error">{formik.errors.date}</div>}
+            </Form.Group>
+          </Row>
+
+          <Row>
+            <Form.Group controlId="validationFormik09" className="form-input">
+              <Form.Label>Multi Select</Form.Label>
+              <Select
+                name="options"
+                className='react-select'
+                options={demoOptions}
+                isMulti={true}
+                onChange={selectedOption =>
+                {
+                  formik.setFieldValue("options", selectedOption);
+                }}
+              />
+              {formik.touched.options && formik.errors.options && <div className="input-error">{formik.errors.options}</div>}
+            </Form.Group>
+          </Row>
+
+          <Row>
+            <Form.Group controlId="validationFormik10" className="form-input">
+              <Form.Label>File Upload</Form.Label>
+              <Form.Control
+                type="file"
+                name="file"
+                value={formik.values.file}
+                onChange={formik.handleChange}
+                isValid={formik.touched.file && !formik.errors.file}
+                isInvalid={formik.touched.file && !!formik.errors.file}
+              />
+              <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+              <Form.Control.Feedback type="invalid">
+                {formik.errors.file}
+              </Form.Control.Feedback>
             </Form.Group>
           </Row>
 

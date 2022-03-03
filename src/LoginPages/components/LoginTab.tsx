@@ -100,7 +100,7 @@ const LoginTab = (): JSX.Element =>
             </Row>
           </Container>
           <div className="actions-wrapper">
-            <button type="submit" className="align-right" disabled={formik.isSubmitting}>
+            <button type="submit" className="button align-right" disabled={formik.isSubmitting}>
               Sign In
             </button>
           </div>

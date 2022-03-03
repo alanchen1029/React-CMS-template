@@ -5,7 +5,7 @@ import Logo from "../assets/images/logo.png";
 import UserIcon from "../assets/images/user.svg";
 import UserIconActive from "../assets/images/user-active.svg";
 import LogoutIcon from "../assets/images/logout.svg";
-import { DEMO_INPUT_VARIANTS_ROUTE, DEMO_LIST1_ROUTE } from "../_constants/route.constants";
+import { DEMO_CHARTS_ROUTE, DEMO_INPUT_VARIANTS_ROUTE, DEMO_LIST1_ROUTE } from "../_constants/route.constants";
 
 export const SideNav = (): JSX.Element =>
 {
@@ -34,21 +34,12 @@ export const SideNav = (): JSX.Element =>
           </NavLink>
         </li>
         <li>
-          <NavLink to="/list-3">
+          <NavLink to={DEMO_CHARTS_ROUTE}>
             <div className="icon">
               <img src={UserIcon} className="in-active" alt="" />
               <img src={UserIconActive} className="active" alt="" />
             </div>
-            <div className="text">CMS List-3</div>
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/list4">
-            <div className="icon">
-              <img src={UserIcon} className="in-active" alt="" />
-              <img src={UserIconActive} className="active" alt="" />
-            </div>
-            <div className="text">CMS List-4</div>
+            <div className="text">Charts</div>
           </NavLink>
         </li>
       </ul>

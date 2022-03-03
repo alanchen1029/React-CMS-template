@@ -11,6 +11,7 @@ interface IPrivateRouteProps
 const PrivateRoute = ({ children }: IPrivateRouteProps): JSX.Element =>
 {
   const [isAuth, setIsAuth] = useState(true);
+  // check token here
 
   return isAuth ? <ConsumerLayout>{children}</ConsumerLayout> : <Navigate to="/" />;
 };
